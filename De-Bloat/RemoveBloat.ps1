@@ -17,98 +17,98 @@
 .OUTPUTS
 C:\ProgramData\Debloat\Debloat.log
 .NOTES
-  Version:        5.0.18
-  Author:         Andrew Taylor
-  Twitter:        @AndrewTaylor_2
-  WWW:            andrewstaylor.com
-  Creation Date:  08/03/2022
-  Purpose/Change: Initial script development
-  Change: 12/08/2022 - Added additional HP applications
-  Change 23/09/2022 - Added Clipchamp (new in W11 22H2)
-  Change 28/10/2022 - Fixed issue with Dell apps
-  Change 23/11/2022 - Added Teams Machine wide to exceptions
-  Change 27/11/2022 - Added Dell apps
-  Change 07/12/2022 - Whitelisted Dell Audio and Firmware
-  Change 19/12/2022 - Added Windows 11 start menu support
-  Change 20/12/2022 - Removed Gaming Menu from Settings
-  Change 18/01/2023 - Fixed Scheduled task error and cleared up $null posistioning
-  Change 22/01/2023 - Re-enabled Telemetry for Endpoint Analytics
-  Change 30/01/2023 - Added Microsoft Family to removal list
-  Change 31/01/2023 - Fixed Dell loop
-  Change 08/02/2023 - Fixed HP apps (thanks to http://gerryhampsoncm.blogspot.com/2023/02/remove-pre-installed-hp-software-during.html?m=1)
-  Change 08/02/2023 - Removed reg keys for Teams Chat
-  Change 14/02/2023 - Added HP Sure Apps
-  Change 07/03/2023 - Enabled Location tracking (with commenting to disable)
-  Change 08/03/2023 - Teams chat fix
-  Change 10/03/2023 - Dell array fix
-  Change 19/04/2023 - Added loop through all users for HKCU keys for post-OOBE deployments
-  Change 29/04/2023 - Removes News Feed
-  Change 26/05/2023 - Added Set-ACL
-  Change 26/05/2023 - Added multi-language support for Set-ACL commands
-  Change 30/05/2023 - Logic to check if gamepresencewriter exists before running Set-ACL to stop errors on re-run
-  Change 25/07/2023 - Added Lenovo apps (Thanks to Simon Lilly and Philip Jorgensen)
-  Change 31/07/2023 - Added LenovoAssist
-  Change 21/09/2023 - Remove Windows backup for Win10
-  Change 28/09/2023 - Enabled Diagnostic Tracking for Endpoint Analytics
-  Change 02/10/2023 - Lenovo Fix
-  Change 06/10/2023 - Teams chat fix
-  Change 09/10/2023 - Dell Command Update change
-  Change 11/10/2023 - Grab all uninstall strings and use native uninstaller instead of uninstall-package
-  Change 14/10/2023 - Updated HP Audio package name
-  Change 31/10/2023 - Added PowerAutomateDesktop and update Microsoft.Todos
-  Change 01/11/2023 - Added fix for Windows backup removing Shell Components
-  Change 06/11/2023 - Removes Windows CoPilot
-  Change 07/11/2023 - HKU fix
-  Change 13/11/2023 - Added CoPilot removal to .Default Users
-  Change 14/11/2023 - Added logic to stop errors on HP machines without HP docs installed
-  Change 14/11/2023 - Added logic to stop errors on Lenovo machines without some installers
-  Change 15/11/2023 - Code Signed for additional security
-  Change 02/12/2023 - Added extra logic before app uninstall to check if a user has logged in
-  Change 04/01/2024 - Added Dropbox and DevHome to AppX removal
-  Change 05/01/2024 - Added MSTSC to whitelist
-  Change 25/01/2024 - Added logic for LenovoNow/LenovoWelcome
-  Change 25/01/2024 - Updated Dell app list (thanks Hrvoje in comments)
-  Change 29/01/2024 - Changed /I to /X in Dell command
-  Change 30/01/2024 - Fix Lenovo Vantage version
-  Change 31/01/2024 - McAfee fix and Dell changes
-  Change 01/02/2024 - Dell fix
-  Change 01/02/2024 - Added logic around appxremoval to stop failures in logging
-  Change 05/02/2024 - Added whitelist parameters
-  Change 16/02/2024 - Added wildcard to dropbox
-  Change 23/02/2024 - Added Lenovo SmartMeetings
-  Change 06/03/2024 - Added Lenovo View and Vantage
-  Change 08/03/2024 - Added Lenovo Smart Noise Cancellation
-  Change 13/03/2024 - Added updated McAfee
-  Change 20/03/2024 - Dell app fixes
-  Change 02/04/2024 - Stopped it removing Intune Management Extension!
-  Change 03/04/2024 - Switched Win32 removal from whitelist to blacklist
-  Change 10/04/2024 - Office uninstall string fix
-  Change 11/04/2024 - Added Office support for multi-language
-  Change 17/04/2024 - HP Apps update
-  Change 19/04/2024 - HP Fix
-  Change 24/04/2024 - Switched provisionedpackage and appxpackage arround
-  Change 02/05/2024 - Fixed notlike to notin
-  Change 03/05/2024 - Change $uninstallprograms
-  Change 19/05/2024 - Disabled feeds on Win11
-  Change 21/05/2024 - Added QuickAssist to removal after security issues
-  Change 25/05/2024 - Whitelist array fix
-  Change 29/05/2025 - Uninstall fix
-  Change 31/05/2024 - Re-write for manufacturer bloat
-  Change 03/06/2024 - Added function for removing Win32 apps
-  Change 03/06/2024 - Added registry key to block "Tell me about this picture" icon
-  Change 06/06/2024 - Added keys to block Windows Recall
-  Change 07/06/2024 - New fixes for HP and McAfee (thanks to Keith Hay)
-  Change 24/06/2024 - Added Microsoft.SecHealthUI to whitelist
-  Change 26/06/2024 - Fix when run outside of ESP
-  Change 04/07/2024 - Dell fix for "|"
-  Change 08/07/2024 - Made whitelist more standard across platforms and removed bloat list to use only whitelisting
-  Change 08/07/2024 - Added start.bin
-  Change 12/07/2024 - Added logic around start.bin
-  Change 15/07/2024 - Removed Lenovo bookmarks
-  Change 18/07/2024 - Updated detection for removing Office Home
-  Change 23/07/2024 - Lenovo camera fix for E14
-  Change 25/07/2024 - Added MS Teams to whitelist
-  Change 07/08/2024 - Lenovo fix
+Version:        5.0.18
+Author:         Andrew Taylor
+Twitter:        @AndrewTaylor_2
+WWW:            andrewstaylor.com
+Creation Date:  08/03/2022
+Purpose/Change: Initial script development
+Change: 12/08/2022 - Added additional HP applications
+Change 23/09/2022 - Added Clipchamp (new in W11 22H2)
+Change 28/10/2022 - Fixed issue with Dell apps
+Change 23/11/2022 - Added Teams Machine wide to exceptions
+Change 27/11/2022 - Added Dell apps
+Change 07/12/2022 - Whitelisted Dell Audio and Firmware
+Change 19/12/2022 - Added Windows 11 start menu support
+Change 20/12/2022 - Removed Gaming Menu from Settings
+Change 18/01/2023 - Fixed Scheduled task error and cleared up $null posistioning
+Change 22/01/2023 - Re-enabled Telemetry for Endpoint Analytics
+Change 30/01/2023 - Added Microsoft Family to removal list
+Change 31/01/2023 - Fixed Dell loop
+Change 08/02/2023 - Fixed HP apps (thanks to http://gerryhampsoncm.blogspot.com/2023/02/remove-pre-installed-hp-software-during.html?m=1)
+Change 08/02/2023 - Removed reg keys for Teams Chat
+Change 14/02/2023 - Added HP Sure Apps
+Change 07/03/2023 - Enabled Location tracking (with commenting to disable)
+Change 08/03/2023 - Teams chat fix
+Change 10/03/2023 - Dell array fix
+Change 19/04/2023 - Added loop through all users for HKCU keys for post-OOBE deployments
+Change 29/04/2023 - Removes News Feed
+Change 26/05/2023 - Added Set-ACL
+Change 26/05/2023 - Added multi-language support for Set-ACL commands
+Change 30/05/2023 - Logic to check if gamepresencewriter exists before running Set-ACL to stop errors on re-run
+Change 25/07/2023 - Added Lenovo apps (Thanks to Simon Lilly and Philip Jorgensen)
+Change 31/07/2023 - Added LenovoAssist
+Change 21/09/2023 - Remove Windows backup for Win10
+Change 28/09/2023 - Enabled Diagnostic Tracking for Endpoint Analytics
+Change 02/10/2023 - Lenovo Fix
+Change 06/10/2023 - Teams chat fix
+Change 09/10/2023 - Dell Command Update change
+Change 11/10/2023 - Grab all uninstall strings and use native uninstaller instead of uninstall-package
+Change 14/10/2023 - Updated HP Audio package name
+Change 31/10/2023 - Added PowerAutomateDesktop and update Microsoft.Todos
+Change 01/11/2023 - Added fix for Windows backup removing Shell Components
+Change 06/11/2023 - Removes Windows CoPilot
+Change 07/11/2023 - HKU fix
+Change 13/11/2023 - Added CoPilot removal to .Default Users
+Change 14/11/2023 - Added logic to stop errors on HP machines without HP docs installed
+Change 14/11/2023 - Added logic to stop errors on Lenovo machines without some installers
+Change 15/11/2023 - Code Signed for additional security
+Change 02/12/2023 - Added extra logic before app uninstall to check if a user has logged in
+Change 04/01/2024 - Added Dropbox and DevHome to AppX removal
+Change 05/01/2024 - Added MSTSC to whitelist
+Change 25/01/2024 - Added logic for LenovoNow/LenovoWelcome
+Change 25/01/2024 - Updated Dell app list (thanks Hrvoje in comments)
+Change 29/01/2024 - Changed /I to /X in Dell command
+Change 30/01/2024 - Fix Lenovo Vantage version
+Change 31/01/2024 - McAfee fix and Dell changes
+Change 01/02/2024 - Dell fix
+Change 01/02/2024 - Added logic around appxremoval to stop failures in logging
+Change 05/02/2024 - Added whitelist parameters
+Change 16/02/2024 - Added wildcard to dropbox
+Change 23/02/2024 - Added Lenovo SmartMeetings
+Change 06/03/2024 - Added Lenovo View and Vantage
+Change 08/03/2024 - Added Lenovo Smart Noise Cancellation
+Change 13/03/2024 - Added updated McAfee
+Change 20/03/2024 - Dell app fixes
+Change 02/04/2024 - Stopped it removing Intune Management Extension!
+Change 03/04/2024 - Switched Win32 removal from whitelist to blacklist
+Change 10/04/2024 - Office uninstall string fix
+Change 11/04/2024 - Added Office support for multi-language
+Change 17/04/2024 - HP Apps update
+Change 19/04/2024 - HP Fix
+Change 24/04/2024 - Switched provisionedpackage and appxpackage arround
+Change 02/05/2024 - Fixed notlike to notin
+Change 03/05/2024 - Change $uninstallprograms
+Change 19/05/2024 - Disabled feeds on Win11
+Change 21/05/2024 - Added QuickAssist to removal after security issues
+Change 25/05/2024 - Whitelist array fix
+Change 29/05/2025 - Uninstall fix
+Change 31/05/2024 - Re-write for manufacturer bloat
+Change 03/06/2024 - Added function for removing Win32 apps
+Change 03/06/2024 - Added registry key to block "Tell me about this picture" icon
+Change 06/06/2024 - Added keys to block Windows Recall
+Change 07/06/2024 - New fixes for HP and McAfee (thanks to Keith Hay)
+Change 24/06/2024 - Added Microsoft.SecHealthUI to whitelist
+Change 26/06/2024 - Fix when run outside of ESP
+Change 04/07/2024 - Dell fix for "|"
+Change 08/07/2024 - Made whitelist more standard across platforms and removed bloat list to use only whitelisting
+Change 08/07/2024 - Added start.bin
+Change 12/07/2024 - Added logic around start.bin
+Change 15/07/2024 - Removed Lenovo bookmarks
+Change 18/07/2024 - Updated detection for removing Office Home
+Change 23/07/2024 - Lenovo camera fix for E14
+Change 25/07/2024 - Added MS Teams to whitelist
+Change 07/08/2024 - Lenovo fix
 N/A
 #>
 
@@ -334,8 +334,6 @@ switch ($locale) {
         'Microsoft.WebMediaExtensions',
         'Microsoft.WebpImageExtension',
         'Microsoft.DesktopAppInstaller',
-        'WindSynthBerry',
-        'MIDIBerry',
         'Slack',
         'Microsoft.SecHealthUI',
         "WavesAudio.MaxxAudioProforDell2019"
@@ -480,9 +478,9 @@ $UserSIDs = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Pr
 
     
     #These are the registry keys that it will delete.
-            
+        
     $Keys = @(
-            
+        
         #Remove Background Tasks
         "HKCR:\Extensions\ContractId\Windows.BackgroundTasks\PackageId\46928bounde.EclipseManager_2.2.4.51_neutral__a5h4egax66k6y"
         "HKCR:\Extensions\ContractId\Windows.BackgroundTasks\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0"
@@ -490,26 +488,26 @@ $UserSIDs = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Pr
         "HKCR:\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.PPIProjection_10.0.15063.0_neutral_neutral_cw5n1h2txyewy"
         "HKCR:\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.XboxGameCallableUI_1000.15063.0.0_neutral_neutral_cw5n1h2txyewy"
         "HKCR:\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.XboxGameCallableUI_1000.16299.15.0_neutral_neutral_cw5n1h2txyewy"
-            
+        
         #Windows File
         "HKCR:\Extensions\ContractId\Windows.File\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0"
-            
+        
         #Registry keys to delete if they aren't uninstalled by RemoveAppXPackage/RemoveAppXProvisionedPackage
         "HKCR:\Extensions\ContractId\Windows.Launch\PackageId\46928bounde.EclipseManager_2.2.4.51_neutral__a5h4egax66k6y"
         "HKCR:\Extensions\ContractId\Windows.Launch\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0"
         "HKCR:\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.PPIProjection_10.0.15063.0_neutral_neutral_cw5n1h2txyewy"
         "HKCR:\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.XboxGameCallableUI_1000.15063.0.0_neutral_neutral_cw5n1h2txyewy"
         "HKCR:\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.XboxGameCallableUI_1000.16299.15.0_neutral_neutral_cw5n1h2txyewy"
-            
+
         #Scheduled Tasks to delete
         "HKCR:\Extensions\ContractId\Windows.PreInstalledConfigTask\PackageId\Microsoft.MicrosoftOfficeHub_17.7909.7600.0_x64__8wekyb3d8bbwe"
-            
+
         #Windows Protocol Keys
         "HKCR:\Extensions\ContractId\Windows.Protocol\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0"
         "HKCR:\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.PPIProjection_10.0.15063.0_neutral_neutral_cw5n1h2txyewy"
         "HKCR:\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxGameCallableUI_1000.15063.0.0_neutral_neutral_cw5n1h2txyewy"
         "HKCR:\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxGameCallableUI_1000.16299.15.0_neutral_neutral_cw5n1h2txyewy"
-               
+
         #Windows Share Target
         "HKCR:\Extensions\ContractId\Windows.ShareTarget\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0"
     )
@@ -530,7 +528,7 @@ $UserSIDs = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Pr
     If (Test-Path $Advertising) {
         Set-ItemProperty $Advertising Enabled -Value 0 
     }
-            
+    
     #Stops Cortana from being used as part of your Windows Search Function
     Write-Host "Stopping Cortana from being used as part of your Windows Search Function"
     $Search = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
@@ -559,7 +557,7 @@ $UserSIDs = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Pr
     
     Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" BingSearchEnabled -Value 0 
 
-            
+
     #Stops the Windows Feedback Experience from sending anonymous data
     Write-Host "Stopping the Windows Feedback Experience program"
     $Period = "HKCU:\Software\Microsoft\Siuf\Rules"
@@ -595,7 +593,7 @@ $UserSIDs = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Pr
     Set-ItemProperty $registryOEM  PreInstalledAppsEverEnabled -Value 0 
     Set-ItemProperty $registryOEM  SilentInstalledAppsEnabled -Value 0 
     Set-ItemProperty $registryOEM  SystemPaneSuggestionsEnabled -Value 0  
-    
+
     ##Loop through users and do the same
     foreach ($sid in $UserSIDs) {
         $registryOEM = "Registry::HKU\$sid\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"
@@ -609,7 +607,7 @@ $UserSIDs = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Pr
         Set-ItemProperty $registryOEM  SilentInstalledAppsEnabled -Value 0 
         Set-ItemProperty $registryOEM  SystemPaneSuggestionsEnabled -Value 0 
     }
-    
+
     #Preping mixed Reality Portal for removal    
     Write-Host "Setting Mixed Reality Portal value to 0 so that you can uninstall it in Settings"
     $Holo = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Holographic"    
@@ -639,7 +637,7 @@ $UserSIDs = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Pr
     }
     Set-ItemProperty $WifiSense2  Value -Value 0 
     Set-ItemProperty $WifiSense3  AutoConnectAllowedOEM -Value 0 
-        
+
     #Disables live tiles
     Write-Host "Disabling live tiles"
     $Live = "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications"    
@@ -656,7 +654,7 @@ $UserSIDs = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Pr
         }
         Set-ItemProperty $Live  NoTileApplicationNotification -Value 1 
     }
-        
+
     #Turns off Data Collection via the AllowTelemtry key by changing it to 0
     # This is needed for Intune reporting to work, uncomment if using via other method
     #Write-Host "Turning off Data Collection"
@@ -672,7 +670,6 @@ $UserSIDs = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Pr
     #If (Test-Path $DataCollection3) {
     #    Set-ItemProperty $DataCollection3  AllowTelemetry -Value 0 
     #}
-    
 
 ###Enable location tracking for "find my device", uncomment if you don't need it
 
@@ -754,8 +751,8 @@ $UserSIDs = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Pr
         Remove-Item $Objects64 -Recurse 
     }
 
-   
-    ##Removes the Microsoft Feeds from displaying
+
+##Removes the Microsoft Feeds from displaying
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds"
 $Name = "EnableFeeds"
 $value = "0"
@@ -790,7 +787,7 @@ Get-AppxPackage Microsoft.549981C3F5F10 -allusers | Remove-AppxPackage
             Set-ItemProperty $picture -Name "{2cc5ca98-6485-489a-920e-b3e88a6ccce3}" -Value 1
         }
     }
-    
+
 ############################################################################################################
 #                                        Remove Scheduled Tasks                                            #
 #                                                                                                          #
@@ -838,10 +835,11 @@ Get-AppxPackage Microsoft.549981C3F5F10 -allusers | Remove-AppxPackage
 #                                        Windows 11 Specific                                               #
 #                                                                                                          #
 ############################################################################################################
-    #Windows 11 Customisations
-    write-host "Removing Windows 11 Customisations"
 
-   #Remove Teams Chat
+#Windows 11 Customisations
+write-host "Removing Windows 11 Customisations"
+
+#Remove Teams Chat
 $MSTeams = "MicrosoftTeams"
 
 $WinPackage = Get-AppxPackage -allusers | Where-Object {$_.Name -eq $MSTeams}
@@ -859,7 +857,7 @@ If ($null -ne $ProvisionedPackage)
 ##Tweak reg permissions
 invoke-webrequest -uri "https://github.com/andrew-s-taylor/public/raw/main/De-Bloat/SetACL.exe" -outfile "C:\Windows\Temp\SetACL.exe"
 C:\Windows\Temp\SetACL.exe -on "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications" -ot reg -actn setowner -ownr "n:$everyone"
- C:\Windows\Temp\SetACL.exe -on "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications" -ot reg -actn ace -ace "n:$everyone;p:full"
+C:\Windows\Temp\SetACL.exe -on "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications" -ot reg -actn ace -ace "n:$everyone;p:full"
 
 
 ##Stop it coming back
@@ -967,11 +965,6 @@ if (!(Test-Path $registryPath)) {
     [Microsoft.Win32.RegistryKey]$HKUCoPilot = [Microsoft.Win32.Registry]::Users.CreateSubKey("temphive\Software\Policies\Microsoft\Windows\WindowsCopilot", [Microsoft.Win32.RegistryKeyPermissionCheck]::ReadWriteSubTree)
     $HKUCoPilot.SetValue("TurnOffWindowsCopilot", 0x1, [Microsoft.Win32.RegistryValueKind]::DWord)
 }
-
-        
-
-
-
     $HKUCoPilot.Flush()
     $HKUCoPilot.Close()
 [gc]::Collect()
@@ -992,7 +985,7 @@ foreach ($sid in $UserSIDs) {
         # If the registry key doesn't exist, create it
         New-Item -Path $registryPath -Force | Out-Null
     }
-    
+
     # Get the property value
     $currentValue = Get-ItemProperty -Path $registryPath -Name $propertyName -ErrorAction SilentlyContinue
     
@@ -1077,11 +1070,11 @@ if ($version -like "*Windows 11*") {
     If(Test-Path "C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml")
 
     {
-    
+
     Remove-Item "C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml"
-    
+
     }
-    
+
 $blankjson = @'
 { 
     "pinnedList": [ 
